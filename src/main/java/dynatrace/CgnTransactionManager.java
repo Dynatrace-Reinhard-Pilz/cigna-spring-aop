@@ -24,6 +24,7 @@ public class CgnTransactionManager {
 		LOGGER.info("getTransaction");
 		final Transaction transaction = TRANSACTION.get();
 		if (transaction == null) {
+			Thread.dumpStack();
 			throw new TransactionException("Not found transaction in ThreadLocal."+
 						"Note: Service or repository method should be annotated with @Transactional annotation.");
 		}
